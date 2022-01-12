@@ -23,10 +23,12 @@ type Converter struct {
 	ToCurrency string
 }
 
+var currencyJsonFile = "./views/public/js/currency.json"
+
 func JSONHandler()([]Currency, error) {
 	currencies := make([]Currency, 0)
 
-	jsonFile, err := ioutil.ReadFile("./views/public/js/currency.json")
+	jsonFile, err := ioutil.ReadFile(currencyJsonFile)
 
 	if err != nil {
 		fmt.Println(err)
@@ -80,8 +82,6 @@ func GetRate(w http.ResponseWriter, r *http.Request)  {
 	if (inputs.FromCurrency == "KES") && (inputs.ToCurrency == "GHS") {
 		currentValue = amount * 0.0545
 	}
-	fmt.Println("Hello ")
-	fmt.Println(currentValue)
 	responses.JSON(w, http.StatusOK, currentValue)
 }
 
