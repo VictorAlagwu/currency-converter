@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Nigerian Naira",
+        "code": "NGN",
+        "symbol": ""
+    },
+    {
+        "name": "Ghanaian Cedis",
+        "code": "GHS",
+        "symbol": ""
+    },
+    {
+        "name": "Kenyan Shillings",
+        "code": "KSH",
+        "symbol": ""
+    }
+]
