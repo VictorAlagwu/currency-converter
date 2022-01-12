@@ -2,16 +2,19 @@
     {
         "name": "Nigerian Naira",
         "code": "NGN",
+        "locale": "en-NG",
         "symbol": ""
     },
     {
         "name": "Ghanaian Cedis",
         "code": "GHS",
+        "locale": "en-GH",
         "symbol": ""
     },
     {
         "name": "Kenyan Shillings",
-        "code": "KSH",
+        "code": "KES",
+        "locale": "en-KE",
         "symbol": ""
     }
 ]

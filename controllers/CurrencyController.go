@@ -13,6 +13,7 @@ import (
 type Currency struct {
 	Name string `json:"name"`
 	Code string `json:"code"`
+	Locale string `json:"locale"`
 	Symbol string `json:"symbol"`
 }
 
@@ -25,7 +26,7 @@ type Converter struct {
 func JSONHandler()([]Currency, error) {
 	currencies := make([]Currency, 0)
 
-	jsonFile, err := ioutil.ReadFile("currency.json")
+	jsonFile, err := ioutil.ReadFile("./views/public/js/currency.json")
 
 	if err != nil {
 		fmt.Println(err)
@@ -60,7 +61,7 @@ func GetRate(w http.ResponseWriter, r *http.Request)  {
 		currentValue = amount * 0.0149
 	}
 
-	if (inputs.FromCurrency == "NGN") && (inputs.ToCurrency == "KSH") {
+	if (inputs.FromCurrency == "NGN") && (inputs.ToCurrency == "KES") {
 		currentValue = amount * 0.2742
 	}
 
@@ -68,17 +69,19 @@ func GetRate(w http.ResponseWriter, r *http.Request)  {
 		currentValue = amount * 66.9611
 	}
 
-	if (inputs.FromCurrency == "GHS") && (inputs.ToCurrency == "KSH") {
+	if (inputs.FromCurrency == "GHS") && (inputs.ToCurrency == "KES") {
 		currentValue = amount * 18.3562
 	}
 
-	if (inputs.FromCurrency == "KSH") && (inputs.ToCurrency == "NGN") {
+	if (inputs.FromCurrency == "KES") && (inputs.ToCurrency == "NGN") {
 		currentValue = amount * 3.6475
 	}
 
-	if (inputs.FromCurrency == "KSH") && (inputs.ToCurrency == "GHS") {
+	if (inputs.FromCurrency == "KES") && (inputs.ToCurrency == "GHS") {
 		currentValue = amount * 0.0545
 	}
+	fmt.Println("Hello ")
+	fmt.Println(currentValue)
 	responses.JSON(w, http.StatusOK, currentValue)
 }
 

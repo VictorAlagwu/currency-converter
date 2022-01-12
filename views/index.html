@@ -19,34 +19,53 @@
         </div>
         <div class="card-body">
             <section>
-                <form action="/getRate" method="post">
+                <form method="post" id="currencyForm">
                     <div class="row">
                         <div class="col-md-3">
-                            <input type="text" placeholder="Amount" name="amount" class="form-control" />
+                            <label class="w-100">
+                                <p>Amount</p>
+                                <input type="number" step="0.0001" placeholder="Amount" name="amount" class="form-control" required />
+                            </label>
                         </div>
                         <div class="col-md-4">
-                            <select name="fromCurrency" class="form-select">
-                                {{range .currencies}}
-                                    <option value="{{.Code}}}">{{.Code}}</option>
-                                {{end}}
-                            </select>
+                            <label class="w-100">
+                                <p>From</p>
+                                <select name="fromCurrency" class="form-select">
+                                    {{range .currencies}}
+                                        <option value="{{.Code}}">{{.Code}} - {{.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </label>
                         </div>
-                        <div class="col-md-1 text-center justify-between">
+                        <div class="col-md-1 text-center justify-between pt-5">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </div>
                         <div class="col-md-4">
-                            <select name="toCurrency" class="form-select">
-                                {{range .currencies}}
-                                    <option value="{{.Code}}}">{{.Code}}</option>
-                                {{end}}
-                            </select>
+                            <label class="w-100">
+                                <p>To</p>
+                                <select name="toCurrency" class="form-select">
+                                    {{range .currencies}}
+                                        <option value="{{.Code}}">{{.Code}} - {{.Name}}</option>
+                                    {{end}}
+                                </select>
+                            </label>
                         </div>
                     </div>
-                    <p><button class="btn btn-secondary mt-2" type="submit">Get Conversion Rate</button></p>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <p id="fromValue"></p>
+                            <p id="rate" class="text-md fw-bold"></p>
+                        </div>
+                        <div class="col-md-6 ">
+                            <p><button class="btn btn-secondary mt-3 float-end" type="submit">Get Conversion Rate</button></p>
+                        </div>
+                    </div>
+
                 </form>
             </section>
         </div>
         <div class="card-footer">
+            <h5>Supported Currencies</h5>
             <ul>
                 {{range .currencies}}
                     <li>{{.Name}}</li>
@@ -55,5 +74,7 @@
         </div>
     </div>
 </div>
+
+<script src="public/js/index.js"></script>
 </body>
 </html>
